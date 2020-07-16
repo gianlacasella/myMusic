@@ -1,7 +1,7 @@
 <template>
     <div class="base_panel d-flex flex-column">
         <div class="panel_title p-0">
-            <p class="text-left element_title">last playlists</p>
+            <p class="text-left element_title">Last playlists</p>
         </div>
         <div class="panel_playlists p-0">
             <div class="card-group">
@@ -9,8 +9,8 @@
                     <img class="card-img-top" src="../assets/logo.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{playlist.title}}</h5>
-                        <p class="card-text">{{playlist.descr}}</p>
-                        <p class="card-text"><small class="text-muted">Created {{playlist.date}}</small></p>
+                        <p class="card-text playlist_descr">{{playlist.descr}}</p>
+                        <p class="card-text"><small class="text-muted">Created on {{playlist.date}}</small></p>
                     </div>
                 </div>
             </div>
@@ -24,10 +24,10 @@ export default {
     data(){
         return {
             last_playlists:[
-                {title:"Road trip", descr:"Tusabe", date:"23/4/2020"},
-                {title:"Chilling", descr:"Tusabe", date:"25/5/2020"},
-                {title:"Low fi", descr:"Tusabe", date:"26/6/2020"},
-                {title:"80s Rock", descr:"Tusabe", date:"27/7/2020"}
+                {title:"Road trip", descr:"Music to hear on the road", date:"23/4/2020"},
+                {title:"Chilling", descr:"Chill at home alone", date:"25/5/2020"},
+                {title:"Low fi", descr:"Low fi to study at home", date:"26/6/2020"},
+                {title:"80s Rock", descr:"Rock it!", date:"27/7/2020"}
             ]
         }
     }
@@ -40,7 +40,13 @@ export default {
     background-color:#2c2c2c;
     padding:0.5em;
     border-radius: 10px!important;
+    transition: all .5s ease-in-out;
 }
+.card:hover{
+    cursor:pointer!important;
+    background-color:#363636;
+}
+
 .card-body{
     color:white;
 }
@@ -56,7 +62,9 @@ export default {
     height:30vh;
     padding: 1em;
 }
-
+.playlist_descr{
+    font-size:.8em!important;
+}
 
 .panel_title{
     height:20%;

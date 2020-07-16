@@ -14,7 +14,7 @@ export default {
     name:"HomePanel",
     data(){
         return {
-            title_selected: "MyMusic, made with Vue.js",
+            title_selected: "MyMusic, simple music app made with Vue.js",
         }
     },
     methods:{
