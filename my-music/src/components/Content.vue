@@ -1,16 +1,19 @@
 <template>
     <div class="_content">
         <HomePanel></HomePanel>
+        <LastPlaylists></LastPlaylists>
     </div>
 </template>
 
 <script>
 import HomePanel from './HomePanel.vue';
+import LastPlaylists from './LastPlaylists.vue';
 
 export default {
     name:"Content",
     components:{
-        HomePanel
+        HomePanel,
+        LastPlaylists
     }
 }
 </script>

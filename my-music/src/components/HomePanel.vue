@@ -14,7 +14,7 @@ export default {
     name:"HomePanel",
     data(){
         return {
-            title_selected: "¡Bienvenido!",
+            title_selected: "MyMusic, made with Vue.js",
         }
     },
     methods:{
@@ -37,7 +37,7 @@ p{
 
 .base_panel{
     background-color: #2c2c2c;
-    height:30vh;
+    height:35vh;
     padding: 1em;
     border-radius: 10px;
 }
