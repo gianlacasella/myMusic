@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container" id="main_container">
+    <div class="container">
       <TopBar></TopBar>
       <Content></Content>
     </div>
@@ -33,8 +33,5 @@ export default {
   margin:0;
   padding:0;
 }
-
-
-
 
 </style>

@@ -1,17 +1,17 @@
 <template>
     <div class="_content">
         <p class="hidden">{{window_selected}}</p>
-        <div v-bind:class="{'hidden' : !windows.home}" class="view">
-            <HomePanel></HomePanel>
+        <div v-bind:class="{'hidden' : !windows.home}">
+            <HomePanel class="change_background_on_hover"></HomePanel>
             <LastPlaylists></LastPlaylists>
         </div>
-        <div v-bind:class="{'hidden' : !windows.browse}" class="view">
+        <div v-bind:class="{'hidden' : !windows.browse}">
             <p>Browse window</p>
         </div>
-        <div v-bind:class="{'hidden' : !windows.music}" class="view">
+        <div v-bind:class="{'hidden' : !windows.music}">
             <p>Gianfranco's music window</p>
         </div>
-        <div v-bind:class="{'hidden' : !windows.playlists}" class="view">
+        <div v-bind:class="{'hidden' : !windows.playlists}">
             <p>Gianfranco's playlists window</p>
         </div>
     </div>
@@ -80,4 +80,43 @@ export default {
     padding: 2em 2em 2em 2em;
     margin-top:0;
 }
+
+.change_background_on_hover{
+    transition: all .5s ease-in-out;
+}
+
+.change_background_on_hover:hover{
+    /*background: #F64F5A;*/
+    cursor:pointer;
+    transform: scaleZ(0.5deg);
+    box-shadow: #181818 10px 10px 25px;
+    animation: bg-animation 20s 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes bg-animation {
+  0% {
+    background-color: #f64f59;
+  }
+  50% {
+    background-color: #c471ed;
+  }
+  100% {
+    background-color: #12c2e9;
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    background-color: #f64f59;
+  }
+  50% {
+    background-color: #c471ed;
+  }
+  100% {
+    background-color: #12c2e9;
+  }
+}
+
 </style>

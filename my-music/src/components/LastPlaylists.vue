@@ -6,7 +6,7 @@
         <div class="panel_playlists p-0">
             <div class="card-group">
                 <div class="card" v-bind:key="playlist.id" v-for="playlist of last_playlists">
-                    <img class="card-img-top" src="../assets/logo.png" alt="Card image cap">
+                    <img class="card-img-top" :src="playlist.img" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{playlist.title}}</h5>
                         <p class="card-text playlist_descr">{{playlist.descr}}</p>
@@ -24,10 +24,10 @@ export default {
     data(){
         return {
             last_playlists:[
-                {title:"Road trip", descr:"Music to hear on the road", date:"23/4/2020"},
-                {title:"Chilling", descr:"Chilling at home alone. Take it easy", date:"25/5/2020"},
-                {title:"Low fi", descr:"Low fi to study at home. Just relax", date:"26/6/2020"},
-                {title:"80s Rock", descr:"Just rock it!", date:"27/7/2020"}
+                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020"},
+                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020"},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020"},
+                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020"}
             ]
         }
     }
@@ -38,26 +38,33 @@ export default {
 .card{
     margin:1em;
     background-color:#2c2c2c;
-    padding:0.5em;
+    padding:0 0 0.5em 0;
     border-radius: 10px!important;
     transition: all .5s ease-in-out;
 }
 
 .card:hover{
     cursor:pointer!important;
-    background-color:#363636;
+    background-color:#181818;
     box-shadow: #181818 10px 10px 30px;
     transform: scaleZ(0.5deg);
 }
 
 .card-body{
     color:white;
+    padding-top: 0.5em;
 }
 
 .element_title{
     color:white;
     font-size: 2em;
     float:left;
+    text-shadow: #181818 1px 1px 10px;
+}
+
+.card-img-top{
+    height: 50%;
+    border-radius: 8px!important;
 }
 
 .base_panel{

@@ -31,7 +31,7 @@ p{
 
 .element_title{
     color:white;
-    
+    text-shadow: #181818 1px 1px 10px;
     font-size: 2em;
     float:left;
 }
