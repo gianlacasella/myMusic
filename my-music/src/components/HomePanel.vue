@@ -1,7 +1,7 @@
 <template>
     <div class="base_panel d-flex flex-column">
-        <div class="panel_title p-2 my-auto">
-            <p class="text-left element_title">{{title_selected}}</p>
+        <div class="panel_title my-auto">
+            <p class="text-center element_title">{{title_selected}}</p>
         </div>
         <div class="panel_image p-2">
             
@@ -26,6 +26,7 @@ export default {
 
 p{
     display: inline;
+    text-align: center!important;
 }
 
 .element_title{
@@ -45,6 +46,7 @@ p{
 .panel_title{
     height:20%;
     margin:0.5em;
+    text-align: center!important;
 }
 
 .panel_image{

@@ -1,17 +1,17 @@
 <template>
     <div class="_content">
         <p class="hidden">{{window_selected}}</p>
-        <div v-bind:class="{'hidden' : !windows.home}">
+        <div v-bind:class="{'hidden' : !windows.home}" class="view">
             <HomePanel></HomePanel>
             <LastPlaylists></LastPlaylists>
         </div>
-        <div v-bind:class="{'hidden' : !windows.browse}">
+        <div v-bind:class="{'hidden' : !windows.browse}" class="view">
             <p>Browse window</p>
         </div>
-        <div v-bind:class="{'hidden' : !windows.music}">
+        <div v-bind:class="{'hidden' : !windows.music}" class="view">
             <p>Gianfranco's music window</p>
         </div>
-        <div v-bind:class="{'hidden' : !windows.playlists}">
+        <div v-bind:class="{'hidden' : !windows.playlists}" class="view">
             <p>Gianfranco's playlists window</p>
         </div>
     </div>
@@ -66,6 +66,7 @@ export default {
 </script>
 
 <style scoped>
+
 .hidden{
     display:none;
 }

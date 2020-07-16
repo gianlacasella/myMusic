@@ -34,9 +34,7 @@ export default {
   padding:0;
 }
 
-#main_container{
-  padding-top:2vh;
-}
+
 
 
 </style>
