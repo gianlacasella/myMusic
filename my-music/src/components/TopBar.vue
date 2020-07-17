@@ -80,11 +80,12 @@ export default {
 }
 
 .navbar{
-  background-color:transparent!important;
+  background-color:#181818!important;
   padding-bottom:0;
   margin-bottom:0vh;
   height:5vh;
-  border-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   text-shadow: black 1px 1px 8px;
 }
 

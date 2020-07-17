@@ -60,4 +60,14 @@ export default {
   padding:0;
 }
 
+.container{
+  box-shadow: black 1px 1px 35px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-bottom:0.3em;
+  padding-right:0.3em;
+  padding-left:0.3em;
+}
 </style>
