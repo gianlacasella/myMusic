@@ -82,7 +82,9 @@ export default {
 .navbar{
   background-color:#181818!important;
   padding-bottom:0;
-  margin-bottom:1vh;
+  margin-bottom:0vh;
+  height:5vh;
+  border-radius: 5px;
 }
 
 .selected{
