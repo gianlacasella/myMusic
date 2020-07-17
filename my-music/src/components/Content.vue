@@ -90,7 +90,7 @@ export default {
     cursor:pointer;
     transform: scaleZ(0.5deg);
     box-shadow: #181818 10px 10px 25px;
-    animation: bg-animation 20s 1;
+    animation: bg-animation 15s infinite;
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
 }
@@ -99,11 +99,14 @@ export default {
   0% {
     background-color: #f64f59;
   }
-  50% {
+  35% {
     background-color: #c471ed;
   }
-  100% {
+  70% {
     background-color: #12c2e9;
+  }
+  100% {
+    background-color: #f64f59;
   }
 }
 
@@ -111,11 +114,14 @@ export default {
   0% {
     background-color: #f64f59;
   }
-  50% {
+  35% {
     background-color: #c471ed;
   }
-  100% {
+  70% {
     background-color: #12c2e9;
+  }
+  100% {
+    background-color: #f64f59;
   }
 }
 

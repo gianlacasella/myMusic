@@ -3,8 +3,7 @@
         <div class="panel_title my-auto">
             <p class="text-center element_title">{{title_selected}}</p>
         </div>
-        <div class="panel_image p-2">
-            
+        <div class="panel_image p-2"> 
         </div>
     </div>
 </template>
@@ -31,13 +30,13 @@ p{
 
 .element_title{
     color:white;
-    text-shadow: #181818 1px 1px 10px;
+    text-shadow: black 2px 2px 7px;
     font-size: 2em;
     float:left;
 }
 
 .base_panel{
-    background-color: #2c2c2c;
+    background-color: #1f1f1f;
     height:35vh;
     padding: 1em;
     border-radius: 10px;

@@ -37,7 +37,7 @@ export default {
 <style scoped>
 .card{
     margin:1em;
-    background-color:#2c2c2c;
+    background-color: #1f1f1f;
     padding:0 0 0.5em 0;
     border-radius: 10px!important;
     transition: all .5s ease-in-out;
@@ -59,7 +59,7 @@ export default {
     color:white;
     font-size: 2em;
     float:left;
-    text-shadow: #181818 1px 1px 10px;
+    text-shadow: black 2px 2px 7px;
 }
 
 .card-img-top{

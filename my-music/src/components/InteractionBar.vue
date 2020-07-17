@@ -66,8 +66,10 @@ export default {
     color:white;
     font-weight: bold;
     font-size: 1.3em!important;
-    text-shadow: 5px 5px 20px #181818;
+    text-shadow: black 2px 2px 7px;
 }
+
+
 
 button{
     background-color: transparent!important;

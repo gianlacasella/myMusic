@@ -80,14 +80,15 @@ export default {
 }
 
 .navbar{
-  background-color:#181818!important;
+  background-color:transparent!important;
   padding-bottom:0;
   margin-bottom:0vh;
   height:5vh;
   border-radius: 5px;
+  text-shadow: black 1px 1px 8px;
 }
 
 .selected{
-  color: #2cd4fa!important;  /* fallback for old browsers */
+  color: #4bdeff!important;  /* fallback for old browsers */
 }
 </style>
