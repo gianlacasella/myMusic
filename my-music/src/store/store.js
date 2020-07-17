@@ -12,6 +12,8 @@ export const store = new Vuex.Store(
                 status:false,
                 text:'play'
             },
+            // normal => el Content y el TopBar. hidden=> no se ven
+            view:"normal",
             // Index of the current song. It has to be 0 at the start
             index:0,
             //All the songs loaded
@@ -71,6 +73,14 @@ export const store = new Vuex.Store(
                 state.song_playing.artist = state.songs[state.index].artist;
                 state.song_playing.src = state.songs[state.index].src;
                 state.song_playing.cover = state.songs[state.index].cover;
+            },
+            // Switches the app view
+            switch_view(state){
+                if(state.view==='normal'){
+                    state.view = 'hidden';
+                } else{
+                    state.view = 'normal';
+                }
             }
         },
         getters:{
@@ -98,6 +108,10 @@ export const store = new Vuex.Store(
                 catch(error){
                     return null;
                 }
+            },
+            // Gives the current selected view
+            get_current_view(state){
+                return state.view;
             }
         },
         actions:{
@@ -111,6 +125,9 @@ export const store = new Vuex.Store(
             },
             changeSong(context, change_element){
                 context.commit('change_song', change_element)
+            },
+            switchView(context){
+                context.commit('switch_view')
             }
         }
     }

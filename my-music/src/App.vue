@@ -2,8 +2,10 @@
   <!--Usamos el binding para cambiar el fondo dependiendo del caso-->
     <div id="app" :style="[updated_background === '#181818' ? {'background-color':'#181818'}:{'background-image':'url('+updated_background+')'}]">
       <div class="container">
-        <TopBar></TopBar>
-        <Content></Content>
+        <div :style="[updated_view === 'hidden' ? {'display':'none'} : {'display':'block'}]">
+          <TopBar></TopBar>
+          <Content></Content>
+        </div>
         <InteractionBar></InteractionBar>
       </div>
     </div>
@@ -32,6 +34,10 @@ export default {
         // Si no, tenemos el fondo por defecto
             return "#181818";
           }
+      },
+      // Obtenemos el valor del view para saber si el usuario escondio la vista
+      updated_view(){
+        return store.getters.get_current_view;
       }
   }
 }
