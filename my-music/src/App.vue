@@ -61,13 +61,15 @@ export default {
 }
 
 ._container{
-  box-shadow: black 1px 1px 35px;
+  box-shadow: black 1px 1px 50px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding-bottom:0.5em;
-  padding-right:0.5em;
-  padding-left:0.5em;
+  padding-right:3em;
+  padding-left:3em;
 }
+
+
 </style>
