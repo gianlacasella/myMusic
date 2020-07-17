@@ -20,7 +20,19 @@ export const store = new Vuex.Store(
                     title: 'Closer to the edge',
                     artist: '30 seconds to Mars',
                     src: require('../assets/music/closer_to_the_edge.mp3'),
-                    cover: require('../assets/music/closer_to_the_edge.jpg')
+                    cover: require('../assets/music/30_seconds_to_mars.jpg')
+                },
+                {
+                    title: "If it means a lot to you",
+                    artist: "A Day to Remember",
+                    src: require('../assets/music/if_it_means_a_lot_to_you.mp3'),
+                    cover: require('../assets/music/a_day_to_remember.jpg')
+                },
+                {
+                    title: "Have faith in me",
+                    artist: "A Day to Remember",
+                    src: require('../assets/music/have_faith_in_me.mp3'),
+                    cover: require('../assets/music/a_day_to_remember.jpg')
                 }
             ],
             // Song playing. Hardcoded for now. It needs to change with this.songs[this.index], from InteractionBar.vue
@@ -29,10 +41,9 @@ export const store = new Vuex.Store(
                 title: 'Closer to the edge',
                 artist: '30 seconds to Mars',
                 src: require('../assets/music/closer_to_the_edge.mp3'),
-                cover: require('../assets/music/closer_to_the_edge.jpg')
+                cover: require('../assets/music/30_seconds_to_mars.jpg')
             }
         },
-        
         mutations:{
             // Changes the window
             change_selected_window(state, new_window){
@@ -47,6 +58,19 @@ export const store = new Vuex.Store(
                     state.playing.status = true;
                     state.playing.text = 'pause';
                 }
+            },
+            // Changes the actual song
+            change_song(state, change_element){
+                state.index = state.index + change_element;
+                if(state.index<0){
+                    state.index = state.songs.length-1;
+                } else if (state.index>state.songs.length-1){
+                    state.index = 0;
+                }
+                state.song_playing.title = state.songs[state.index].title;
+                state.song_playing.artist = state.songs[state.index].artist;
+                state.song_playing.src = state.songs[state.index].src;
+                state.song_playing.cover = state.songs[state.index].cover;
             }
         },
         getters:{
@@ -84,6 +108,9 @@ export const store = new Vuex.Store(
             },
             switchPlaying(context){
                 context.commit('switch_play_pause')
+            },
+            changeSong(context, change_element){
+                context.commit('change_song', change_element)
             }
         }
     }

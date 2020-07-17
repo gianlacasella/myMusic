@@ -5,11 +5,15 @@
                 <img src="../assets/icons/volume_up.png" alt="" class="iconify">
             </div>
             <div class="text-center">
-                <img src="../assets/icons/prev.png" alt="" class="iconify">
+                <button @click="change_song(-1)">
+                    <img src="../assets/icons/prev.png" alt="" class="iconify">
+                </button>
                     <button  @click="switch_playing_status()">
                         <img class="iconify" :src="require('../assets/icons/'+playing_or_not.text+'.png')" alt="">
                     </button>
-                <img src="../assets/icons/next.png" alt="" class="iconify">
+                <button @click="change_song(1)">
+                    <img src="../assets/icons/next.png" alt="" class="iconify">
+                </button>
             </div>
             <div class="text-left volume_div">
                 <span class="iconify" data-icon="cib:spotify" data-inline="false" ></span>
@@ -41,6 +45,13 @@ export default {
             } else {
                 this.player.play();
             }
+        },
+        // Metodo para cambiar de cancion: 1 para adelantar, -1 para retroceder
+        change_song(change_element){
+            store.dispatch('changeSong', change_element);
+            this.player.src = this.current_song.src;
+            this.player.pause()
+            this.player.play()
         }
     },
     created(){
