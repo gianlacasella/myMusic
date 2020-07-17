@@ -1,7 +1,7 @@
 <template>
   <!--Usamos el binding para cambiar el fondo dependiendo del caso-->
     <div id="app" :style="[updated_background === '#181818' ? {'background-color':'#181818'}:{'background-image':'url('+updated_background+')'}]">
-      <div class="container">
+      <div class="_container container">
         <div :style="[updated_view === 'hidden' ? {'display':'none'} : {'display':'block'}]">
           <TopBar></TopBar>
           <Content></Content>
@@ -60,14 +60,14 @@ export default {
   padding:0;
 }
 
-.container{
+._container{
   box-shadow: black 1px 1px 35px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  padding-bottom:0.3em;
-  padding-right:0.3em;
-  padding-left:0.3em;
+  padding-bottom:0.5em;
+  padding-right:0.5em;
+  padding-left:0.5em;
 }
 </style>

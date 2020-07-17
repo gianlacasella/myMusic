@@ -63,7 +63,7 @@ export default {
                 this.player.play();
             }
         },
-        // Metodo para cambiar de cancion: 1 para adelantar, -1 para retroceder
+        // Metodo para cambiar de cancion con adelanto y retroceso: 1 para adelantar, -1 para retroceder
         change_song(change_element){
             store.dispatch('changeSong', change_element);
             this.player.src = this.current_song.src;
@@ -72,6 +72,14 @@ export default {
                 this.player.play()
             } 
         },
+
+        // TRABAJANDO AQUI: Metodo para cambiar de cancion, sin saber a cual se ira porque los componentes  ya le dijeron al store cual es
+        change_to_unknown_song(){
+            this.player.src = this.current_song.src;
+            this.player.pause();
+            this.player.play();
+        },
+
         // Metodo para mutear la cancion
         mute_unmute(){
             if(!this.player.muted){
@@ -109,6 +117,9 @@ export default {
         updated_view(){
             return store.getters.get_current_view;
         }
+    },
+    watch:{
+        
     }
 }
 </script>
@@ -134,6 +145,7 @@ button{
     margin:0!important;
     outline:none;
 }
+
 .iconify{
     color:white;
     padding:0.1em!important;

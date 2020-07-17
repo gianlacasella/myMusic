@@ -16,21 +16,26 @@ export const store = new Vuex.Store(
             view:"normal",
             // Index of the current song. It has to be 0 at the start
             index:0,
+            // TRABAJANDO AQUI: To know if we neew to change to another song, requested by other components
+            change_song:false,
             //All the songs loaded
             songs:[
                 {
+                    id:0,
                     title: 'Closer to the edge',
                     artist: '30 seconds to Mars',
                     src: require('../assets/music/closer_to_the_edge.mp3'),
                     cover: require('../assets/music/30_seconds_to_mars.jpg')
                 },
                 {
+                    id:1,
                     title: "If it means a lot to you",
                     artist: "A Day to Remember",
                     src: require('../assets/music/if_it_means_a_lot_to_you.mp3'),
                     cover: require('../assets/music/a_day_to_remember.jpg')
                 },
                 {
+                    id:2,
                     title: "Have faith in me",
                     artist: "A Day to Remember",
                     src: require('../assets/music/have_faith_in_me.mp3'),
@@ -69,10 +74,7 @@ export const store = new Vuex.Store(
                 } else if (state.index>state.songs.length-1){
                     state.index = 0;
                 }
-                state.song_playing.title = state.songs[state.index].title;
-                state.song_playing.artist = state.songs[state.index].artist;
-                state.song_playing.src = state.songs[state.index].src;
-                state.song_playing.cover = state.songs[state.index].cover;
+                state.song_playing = state.songs[state.index];
             },
             // Switches the app view
             switch_view(state){
@@ -81,6 +83,16 @@ export const store = new Vuex.Store(
                 } else{
                     state.view = 'normal';
                 }
+            },
+
+            // TRABAJANDO AQUI
+            play_song(state, id){
+                state.index = id;
+                state.song_playing = state.songs[id];
+                state.playing.status = true;
+                state.playing.text = 'pause';
+                // We change change_song to true to notify the interactionbar that we changed it
+                state.change_song = true;
             }
         },
         getters:{
@@ -112,6 +124,23 @@ export const store = new Vuex.Store(
             // Gives the current selected view
             get_current_view(state){
                 return state.view;
+            },
+            // Gives all the songs data to the AllMusicView componente
+            get_all_songs_data(state){
+                var aux = [];
+                state.songs.forEach(element=>{
+                    var aux2 = {};
+                    aux2.id = element.id;
+                    aux2.title = element.title;
+                    aux2.artist = element.artist;
+                    aux.push(aux2);
+                });
+                return aux;
+            },
+
+            // TRABAJANDO AQUI: Gives the current selected view
+            get_current_change_song_status(state){
+                return state.change_song;
             }
         },
         actions:{
@@ -128,6 +157,9 @@ export const store = new Vuex.Store(
             },
             switchView(context){
                 context.commit('switch_view')
+            },
+            playSong(context, id){
+                context.commit('play_song', id)
             }
         }
     }

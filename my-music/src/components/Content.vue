@@ -6,10 +6,10 @@
             <LastPlaylists></LastPlaylists>
         </div>
         <div v-bind:class="{'hidden' : !windows.browse}">
-            <p>Browse window</p>
+            <BrowseView></BrowseView>
         </div>
         <div v-bind:class="{'hidden' : !windows.music}">
-            <p>Gianfranco's music window</p>
+            <AllMusicView></AllMusicView>
         </div>
         <div v-bind:class="{'hidden' : !windows.playlists}">
             <p>Gianfranco's playlists window</p>
@@ -20,13 +20,17 @@
 <script>
 import HomePanel from './HomePanel.vue';
 import LastPlaylists from './LastPlaylists.vue';
+import BrowseView from './BrowseView.vue';
+import AllMusicView from './AllMusicView.vue';
 import {store} from '../store/store';
 
 export default {
     name:"Content",
     components:{
         HomePanel,
-        LastPlaylists
+        LastPlaylists,
+        BrowseView,
+        AllMusicView
     },
     data(){
         return {
@@ -76,7 +80,7 @@ export default {
     background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height:80vh;
-    padding: 2em 2em 2em 2em;
+    padding: 1.5em 1.5em 1.5em 1.5em;
     margin-top:0;
 }
 
