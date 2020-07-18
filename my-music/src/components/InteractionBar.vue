@@ -133,6 +133,11 @@ export default {
                 // change_song to false, to wait for another change
                 store.state.change_song = false;
             }
+        },
+        playing_or_not(playing_status){
+            if(!playing_status.status && this.player.play){
+                this.player.pause();
+            }
         }
     }
 }

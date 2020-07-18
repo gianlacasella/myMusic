@@ -40,15 +40,19 @@ export const store = new Vuex.Store(
                     artist: "A Day to Remember",
                     src: require('../assets/music/have_faith_in_me.mp3'),
                     cover: require('../assets/music/a_day_to_remember.jpg')
+                },
+                {
+                    id:3,
+                    title: "I miss you",
+                    artist: "Blink 182",
+                    src: require('../assets/music/i_miss_you.mp3'),
+                    cover: require('../assets/music/blink-182.jpg')
                 }
             ],
             // Song playing. Hardcoded for now. It needs to change with this.songs[this.index], from InteractionBar.vue
             // This should be empty initially, and then change to the chosen song on play click
             song_playing:{
-                title: 'Closer to the edge',
-                artist: '30 seconds to Mars',
-                src: require('../assets/music/closer_to_the_edge.mp3'),
-                cover: require('../assets/music/30_seconds_to_mars.jpg')
+                
             }
         },
         mutations:{
@@ -59,11 +63,9 @@ export const store = new Vuex.Store(
             // Switches play and pause
             switch_play_pause(state){
                 if(state.playing.status){
-                    state.playing.status = false;
-                    state.playing.text = 'play';
+                    state.playing = {status:false, text:'play'};
                 } else {
-                    state.playing.status = true;
-                    state.playing.text = 'pause';
+                    state.playing = {status:true, text:'pause'};
                 }
             },
             // Changes the actual song
@@ -95,6 +97,9 @@ export const store = new Vuex.Store(
                 // We change the propertie change_song to true
                 // InteractionBar is watching this change, and will play the new song
                 state.change_song = true;
+            },
+            pause_song(state){
+                state.playing = {status: false, text: 'play'}
             }
         },
         getters:{
@@ -167,6 +172,9 @@ export const store = new Vuex.Store(
             playSong(context, id){
                 // Execute the play_song method
                 context.commit('play_song', id)
+            },
+            pauseSong(context){
+                context.commit('pause_song')
             }
         }
     }

@@ -4,9 +4,9 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex bd-highlight mb-3" @mouseenter="mouseOverSong(song.id)" @mouseleave="mouseLeftSong(song.id)" v-bind:key="song.id" v-for="song of songs"
                 :style="[song.hover ? {'border-bottom-left-radius': '10px', 'border-bottom-right-radius':'10px'}:{'border-bottom-right-radius':'0', 'border-bottom-left-radius': '0'},
-                        song.playing ? {'background':'#12c2e9', 'background':'-webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9)', 'background':'linear-gradient(to right, #f64f59, #c471ed, #12c2e9)'}:{'background-color':'#181818'}]">
+                        song.playing ? {'background':'#12c2e9', 'background':'-webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9)', 'background':'linear-gradient(to right, #f64f59, #c471ed, #12c2e9)', 'border-bottom-right-radius':'10px', 'border-bottom-left-radius': '10px'}:{'background-color':'#181818'}]">
                     <!--When user wants to play a song, we use playSong(song.id)-->
-                    <button class="p-1 bd-highlight" :style="[song.hover ? {'visibility':'visible'} : {'visibility':'hidden'}]" @click="playSong(song.id)">
+                    <button class="p-1 bd-highlight" :style="[song.hover || song.playing ? {'visibility':'visible'} : {'visibility':'hidden'}]" @click="playSong(song.id)">
                         <img :src="require('../assets/icons/'+song.txt+'.png')" alt="" class="iconify play_button">
                     </button>
                     <p class="titulo_cancion pt-2 pl-2 bd-highlight" :style="[song.hover ? {'font-weight':'bold'} : {'font-weight':'normal'}, song.playing ? {'font-weight':'bold'}:{'font-weight':'normal'}]">{{song.title}}</p>
@@ -38,7 +38,15 @@ export default {
         },
         // Method executed when user clicks on a song. This says to the store which song user wants to play (check action playSong on store)
         playSong(id){
-            store.dispatch('playSong', id);
+            if(this.songs[id].playing){
+                store.dispatch('pauseSong');
+                this.songs[id].playing = false;
+                this.songs[id].txt = 'play';
+            }else{
+                store.dispatch('playSong', id);
+                this.songs[id].playing = true;
+                this.songs[id].txt = 'pause';
+            }
         }
     },
     computed:{
@@ -55,14 +63,28 @@ export default {
         // Returs the current song playing
         get_current_playing_song(){
             return store.getters.get_current_song;
+        },
+        playing_or_not(){
+            return store.getters.get_playing_status;
         }
     },
     watch:{
+        // Changes the current playing song hightlight according to what the store says
         get_current_playing_song(song){
             this.songs.forEach(element=>element.playing = false);
             this.songs.forEach(element=>element.txt = 'play');
             this.songs[song.id].playing = true;
             this.songs[song.id].txt = 'pause';
+        },
+        // Changes the hightlight of the current playing song according to what the store says (playing or not?)
+        playing_or_not(status){
+            if(status.status){
+                this.songs[this.get_current_playing_song.id].playing = true ;
+                this.songs[this.get_current_playing_song.id].txt = 'pause' ;
+            } else {
+                this.songs.forEach(element=>element.playing = false);
+                this.songs.forEach(element=>element.txt = 'play');
+            }
         }
     },
     created(){
@@ -70,13 +92,8 @@ export default {
         var all_songs = this.get_all_songs_data;
         all_songs.forEach(element=>{
             element.hover = false;
-            if(element.id === 0){
-                element.playing = true;
-                element.txt = 'pause';
-            } else {
-                element.playing = false;
-                element.txt = 'play';
-            }
+            element.playing = false;
+            element.txt = 'play';
             this.songs.push(element);
         })
     }
