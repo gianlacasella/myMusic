@@ -4,6 +4,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex bd-highlight mb-3" @mouseenter="mouseOverSong(song.id)" @mouseleave="mouseLeftSong(song.id)" v-bind:key="song.id" v-for="song of songs"
                 :style="[song.hover ? {'border-bottom-left-radius': '10px', 'border-bottom-right-radius':'10px'}:{'border-bottom-right-radius':'0', 'border-bottom-left-radius': '0'}]">
+                    <!--When user wants to play a song, we use playSong(song.id)-->
                     <button class="p-1 bd-highlight" :style="[song.hover ? {'visibility':'visible'} : {'visibility':'hidden'}]" @click="playSong(song.id)">
                         <img :src="require('../assets/icons/play.png')" alt="" class="iconify play_button">
                     </button>
@@ -21,22 +22,22 @@ export default {
     name:"AllMusicView",
     data(){
         return {
-            // This songs should come from store
-            songs:[
-                
-            ]
+            // This songs comes from the store when the component is created
+            songs:[]
         }
     },
     methods:{
+        // Changes the hover property of the song to true
         mouseOverSong(id){
             this.songs[id].hover = true;
         },
+        // Changes the hover property of the song to false
         mouseLeftSong(id){
             this.songs[id].hover = false;
         },
+        // Method executed when user clicks on a song. This says to the store which song user wants to play (check action playSong on store)
         playSong(id){
             store.dispatch('playSong', id);
-            // Aqui quede. Alcance a decirle al store que hay que reproducir una cancion, y el id de la cancion a reproducir
         }
     },
     computed:{

@@ -73,7 +73,7 @@ export default {
             } 
         },
 
-        // TRABAJANDO AQUI: Metodo para cambiar de cancion, sin saber a cual se ira porque los componentes  ya le dijeron al store cual es
+        // Method to play a song the user wants to play. The chosen song is already selected on store
         change_to_unknown_song(){
             this.player.src = this.current_song.src;
             this.player.pause();
@@ -116,10 +116,23 @@ export default {
         // Obtenemos el valor del view para saber si el usuario escondio la vista
         updated_view(){
             return store.getters.get_current_view;
+        },
+        // We get the change_song value, to know if the user wants to play another song
+        play_unknown_song(){
+            return store.getters.get_current_change_song_status;
         }
     },
     watch:{
-        
+        // Watcher that watches if there are changes on change_song in the store
+        // If there is a change, and the status (change_song, in this case) is true, it plays the song
+        play_unknown_song(status){
+            if(status){
+                // Play the song
+                this.change_to_unknown_song();
+                // change_song to false, to wait for another change
+                store.state.change_song = false;
+            }
+        }
     }
 }
 </script>

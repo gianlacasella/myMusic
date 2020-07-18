@@ -16,7 +16,7 @@ export const store = new Vuex.Store(
             view:"normal",
             // Index of the current song. It has to be 0 at the start
             index:0,
-            // TRABAJANDO AQUI: To know if we neew to change to another song, requested by other components
+            // false => no need to change song. true => user wants to change the song
             change_song:false,
             //All the songs loaded
             songs:[
@@ -84,14 +84,16 @@ export const store = new Vuex.Store(
                     state.view = 'normal';
                 }
             },
-
-            // TRABAJANDO AQUI
+            // Executed when user wants to play given a song
             play_song(state, id){
+                // Change the actual index and song_playing to the wanted song
                 state.index = id;
                 state.song_playing = state.songs[id];
+                // Change the playing status
                 state.playing.status = true;
                 state.playing.text = 'pause';
-                // We change change_song to true to notify the interactionbar that we changed it
+                // We change the propertie change_song to true
+                // InteractionBar is watching this change, and will play the new song
                 state.change_song = true;
             }
         },
@@ -138,27 +140,32 @@ export const store = new Vuex.Store(
                 return aux;
             },
 
-            // TRABAJANDO AQUI: Gives the current selected view
+            // Gives the current selected view
             get_current_change_song_status(state){
                 return state.change_song;
             }
         },
         actions:{
-            // Accion que se ejecuta desde los componentes
+            // Actions executed from the components
+
             changeSelectedWindow(context, new_window){
-                // Llamamos al metodo change_selected_window
+                // Execute the change_selected_window method
                 context.commit('change_selected_window', new_window)
             },
             switchPlaying(context){
+                // Execute the switch_play_pause method
                 context.commit('switch_play_pause')
             },
             changeSong(context, change_element){
+                // Execute the change_song method
                 context.commit('change_song', change_element)
             },
             switchView(context){
+                // Execute the switch_view method
                 context.commit('switch_view')
             },
             playSong(context, id){
+                // Execute the play_song method
                 context.commit('play_song', id)
             }
         }
