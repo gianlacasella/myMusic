@@ -19,15 +19,14 @@ export const store = new Vuex.Store(
             // false => no need to change song. true => user wants to change the song
             change_song:false,
             //All the songs loaded
-            songs:[
+            songs: [
                 {
                     id:0,
-                    title: 'Closer to the edge',
-                    artist: '30 seconds to Mars',
+                    title: "Closer to the edge",
+                    artist: "30 seconds to Mars",
                     src: require('../assets/music/closer_to_the_edge.mp3'),
                     cover: require('../assets/music/30_seconds_to_mars.jpg')
-                },
-                {
+                },{
                     id:1,
                     title: "If it means a lot to you",
                     artist: "A Day to Remember",
