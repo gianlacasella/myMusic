@@ -3,13 +3,14 @@
         <div class="list">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex bd-highlight mb-3" @mouseenter="mouseOverSong(song.id)" @mouseleave="mouseLeftSong(song.id)" v-bind:key="song.id" v-for="song of songs"
-                :style="[song.hover ? {'border-bottom-left-radius': '10px', 'border-bottom-right-radius':'10px'}:{'border-bottom-right-radius':'0', 'border-bottom-left-radius': '0'}]">
+                :style="[song.hover ? {'border-bottom-left-radius': '10px', 'border-bottom-right-radius':'10px'}:{'border-bottom-right-radius':'0', 'border-bottom-left-radius': '0'},
+                        song.playing ? {'background':'#12c2e9', 'background':'-webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9)', 'background':'linear-gradient(to right, #f64f59, #c471ed, #12c2e9)'}:{'background-color':'#181818'}]">
                     <!--When user wants to play a song, we use playSong(song.id)-->
                     <button class="p-1 bd-highlight" :style="[song.hover ? {'visibility':'visible'} : {'visibility':'hidden'}]" @click="playSong(song.id)">
-                        <img :src="require('../assets/icons/play.png')" alt="" class="iconify play_button">
+                        <img :src="require('../assets/icons/'+song.txt+'.png')" alt="" class="iconify play_button">
                     </button>
-                    <p class="titulo_cancion pt-2 pl-2 bd-highlight" :style="[song.hover ? {'font-weight':'bold'} : {'font-weight':'normal'}]">{{song.title}}</p>
-                    <p class="artista_cancion ml-auto pt-2 pr-4 bd-highlight" :style="[song.hover ? {'font-weight':'bold'} : {'font-weight':'normal'}]">{{song.artist}}</p>
+                    <p class="titulo_cancion pt-2 pl-2 bd-highlight" :style="[song.hover ? {'font-weight':'bold'} : {'font-weight':'normal'}, song.playing ? {'font-weight':'bold'}:{'font-weight':'normal'}]">{{song.title}}</p>
+                    <p class="artista_cancion ml-auto pt-2 pr-4 bd-highlight" :style="[song.hover ? {'font-weight':'bold'} : {'font-weight':'normal'}, song.playing ? {'font-weight':'bold'}:{'font-weight':'normal'}]">{{song.artist}}</p>
                 </li>
             </ul>
         </div>
@@ -50,6 +51,18 @@ export default {
         // Returns all the data from the store about the available songs
         get_all_songs_data(){
             return store.getters.get_all_songs_data;
+        },
+        // Returs the current song playing
+        get_current_playing_song(){
+            return store.getters.get_current_song;
+        }
+    },
+    watch:{
+        get_current_playing_song(song){
+            this.songs.forEach(element=>element.playing = false);
+            this.songs.forEach(element=>element.txt = 'play');
+            this.songs[song.id].playing = true;
+            this.songs[song.id].txt = 'pause';
         }
     },
     created(){
@@ -57,6 +70,13 @@ export default {
         var all_songs = this.get_all_songs_data;
         all_songs.forEach(element=>{
             element.hover = false;
+            if(element.id === 0){
+                element.playing = true;
+                element.txt = 'pause';
+            } else {
+                element.playing = false;
+                element.txt = 'play';
+            }
             this.songs.push(element);
         })
     }
@@ -111,9 +131,9 @@ button{
 }
 
 .list-group-item:hover{
-    background: #12c2e9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #12c2e9; 
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); 
 }
 
 </style>

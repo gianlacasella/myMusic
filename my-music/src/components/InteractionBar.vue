@@ -125,6 +125,7 @@ export default {
     watch:{
         // Watcher that watches if there are changes on change_song in the store
         // If there is a change, and the status (change_song, in this case) is true, it plays the song
+        // It is necessary to call this watcher with the same name as the computed method
         play_unknown_song(status){
             if(status){
                 // Play the song
