@@ -12,7 +12,7 @@
             <AllMusicView></AllMusicView>
         </div>
         <div v-bind:class="{'hidden' : !windows.playlists}">
-            <p>Gianfranco's playlists window</p>
+            <AllPlaylists></AllPlaylists>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@ import HomePanel from './HomePanel.vue';
 import LastPlaylists from './LastPlaylists.vue';
 import BrowseView from './BrowseView.vue';
 import AllMusicView from './AllMusicView.vue';
+import AllPlaylists from './AllPlaylists.vue';
 import {store} from '../store/store';
 
 export default {
@@ -30,7 +31,8 @@ export default {
         HomePanel,
         LastPlaylists,
         BrowseView,
-        AllMusicView
+        AllMusicView,
+        AllPlaylists
     },
     data(){
         return {

@@ -19,17 +19,17 @@
 </template>
 
 <script>
+import {store} from '../store/store';
+
 export default {
     name:"LastPlaylists",
     data(){
         return {
-            last_playlists:[
-                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020"},
-                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020"},
-                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020"},
-                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020"}
-            ]
+            last_playlists:[]
         }
+    },
+    created(){
+        this.last_playlists = store.getters.get_last_playlists;
     }
 }
 </script>

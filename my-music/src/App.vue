@@ -66,9 +66,7 @@ export default {
   border-bottom-right-radius: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  padding-bottom:0.5em;
-  padding-right:3em;
-  padding-left:3em;
+  padding:0!important;
 }
 
 

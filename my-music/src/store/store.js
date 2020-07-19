@@ -48,6 +48,27 @@ export const store = new Vuex.Store(
                     cover: require('../assets/music/blink-182.jpg')
                 }
             ],
+            // Last playlists, to show on the first view
+            last_playlists:[
+                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
+                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]}
+            ],
+            all_playlists:[
+                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
+                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]},
+                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
+                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]},
+                {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
+                {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]}
+            ],
             // Song playing. Hardcoded for now. It needs to change with this.songs[this.index], from InteractionBar.vue
             // This should be empty initially, and then change to the chosen song on play click
             song_playing:{
@@ -143,10 +164,17 @@ export const store = new Vuex.Store(
                 });
                 return aux;
             },
-
             // Gives the current selected view
             get_current_change_song_status(state){
                 return state.change_song;
+            },
+            // Gives the last playlists
+            get_last_playlists(state){
+                return state.last_playlists;
+            },
+            // Gives the last playlists
+            get_all_playlists(state){
+                return state.all_playlists;
             }
         },
         actions:{
