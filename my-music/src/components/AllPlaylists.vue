@@ -121,8 +121,12 @@ export default {
     border-radius: 8px!important;
 }
 
+.card-title{
+    font-size:120%!important;
+}
+
 .playlist_descr{
-    font-size:.8em!important;
+    font-size:100%!important;
 }
 
 .panel_playlists{

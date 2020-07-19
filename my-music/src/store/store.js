@@ -52,7 +52,7 @@ export const store = new Vuex.Store(
             last_playlists:[
                 {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
                 {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
-                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cook"]},
                 {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]}
             ],
             all_playlists:[
@@ -62,11 +62,11 @@ export const store = new Vuex.Store(
                 {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]},
                 {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
                 {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
-                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cook"]},
                 {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]},
                 {title:"Road trip", img: require('../assets/playlists/roadtrip.jpg'), descr:"Music to hear on the road with friends", date:"23/4/2020", categories:["With friends", "Travel"]},
                 {title:"Chilling",  img: require('../assets/playlists/chilling.jpg'), descr:"Chilling at home alone. Take it easy", date:"25/5/2020", categories:["At home", "Coding"]},
-                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cooking"]},
+                {title:"Low fi",  img: require('../assets/playlists/lowfi.jpg'), descr:"Low fi to study at home. Just relax", date:"26/6/2020", categories:["At home", "Coding", "Cook"]},
                 {title:"80's Rock",  img: require('../assets/playlists/80srock.jpeg'), descr:"Just rock it and enjoy the 80's beats", date:"27/7/2020", categories:["At home", "With friends", "Travel"]}
             ],
             // Song playing. Hardcoded for now. It needs to change with this.songs[this.index], from InteractionBar.vue
