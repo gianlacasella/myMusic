@@ -54,7 +54,7 @@ export default {
             }
             i++;
         });
-        this.num_groups = i/4;
+        this.filtered_playlists = this.all_playlists.slice();
     },
     methods:{
         click_categorie(indx){
@@ -135,7 +135,7 @@ export default {
 }
 
 .categories_panel{
-    height:7vh;
+    height:5vh;
     margin-top:1em;
     margin-bottom:0;
     padding-bottom: 0;

@@ -95,7 +95,7 @@ export default {
             element.playing = false;
             element.txt = 'play';
             this.songs.push(element);
-        })
+        });
     }
 }
 </script>
