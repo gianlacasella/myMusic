@@ -59,8 +59,37 @@ export default {
     methods:{
         click_categorie(indx){
             this.selected = indx;
-        },
-    computed:{}
+        }
+    },
+    computed:{
+        change_categorie(){
+            return this.selected;
+        }
+    },
+    watch:{
+        change_categorie(change){
+            console.log(change);
+            var aux_array = [];
+            this.all_playlists.forEach(group=>{
+                group.forEach(playlist=>{
+                    if(playlist.categories.includes(this.all_categories[this.selected]) || this.all_categories[this.selected]==="All"){
+                        aux_array.push(playlist);
+                    }
+                })
+            })
+            console.log(this.filtered_playlists);
+            let i = 0;
+            this.filtered_playlists = [];
+            aux_array.forEach(e=>{
+                if(i%4===0){
+                    this.filtered_playlists.push([e]);
+                } else {
+                    this.filtered_playlists[this.filtered_playlists.length - 1].push(e);
+                }
+                i++;
+            });
+            this.num_groups = i/4;
+        }
     }
 }
 </script>
